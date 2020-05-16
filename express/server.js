@@ -17,7 +17,7 @@ router.get('/demo', (req, res) => {
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-router.get('/demo', (req, res) => res.json({ user: "demo" ,pwdcode: "1qaz2wsx" }));
+router.get('/demores', (req, res) => res.json({ user: "demo" ,pwdcode: "1qaz2wsx" }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
