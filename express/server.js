@@ -4,7 +4,8 @@ const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
-var birds = require('./birds');
+
+const demo = require('./demo');
 
 const router = express.Router();
 router.get('/', (req, res) => {
@@ -12,20 +13,19 @@ router.get('/', (req, res) => {
   res.write('<h1>Hello from Express.js!</h1>');
   res.end();
 });
-router.get('/demo', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from Express.js! demo</h1>');
-  res.end();
-});
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
-router.get('/demores', (req, res) => res.json({ user: "demo" ,pwdcode: "1qaz2wsx" }));
+router.get('/login', (req, res) => res.json({ user: "demo" ,pwdcode: "1qaz2wsx" }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
+
 app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/.netlify/functions/server/birds', birds); 
+app.use('/.netlify/functions/server/demo', demo); 
+app.use('/.netlify/functions/demo', demo); 
+
 app.use('/server', router);
-app.use('/birds', birds);
+app.use('/server/demo', demo);
+
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
