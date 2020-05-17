@@ -1,3 +1,8 @@
+# reference
+
+- [dotenv](https://dwatow.github.io/2019/01-26-node-with-env-first/#fn1)
+- [swagger](https://medium.com/@pingyenchen/swagger-%E5%9C%A8-node-%E7%92%B0%E5%A2%83%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90-api-docs-698f5252cbaf)
+
 # Express.js on Netlify Example
 
 [![Netlify

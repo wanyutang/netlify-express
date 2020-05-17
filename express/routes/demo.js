@@ -1,6 +1,6 @@
 
 'use strict';
-
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 
@@ -10,15 +10,15 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 // define the home page route
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   res.send('Demo home page');
 });
 // define the about route
-router.get('/about', function(req, res) {
+router.get('/about', function (req, res) {
   res.send('About birds');
 });
-// define the about route
-router.get('/publicPath', function(req, res) {
+
+router.get('/publicPath', function (req, res) {
   res.send(process.env.publicPath);
 });
 

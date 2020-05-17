@@ -1,12 +1,12 @@
 'use strict';
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 
-const demo = require('./demo');
-
+const demo = require('./routes/demo');
 const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -19,12 +19,8 @@ router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
 
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/.netlify/functions/server/demo', demo); 
-app.use('/.netlify/functions/demo', demo); 
-
-app.use('/server', router);
-app.use('/server/demo', demo);
+app.use(process.env.publicPath+'/server', router);  // path must route to lambda
+app.use(process.env.publicPath+'/server/demo', demo); 
 
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
