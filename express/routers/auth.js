@@ -1,11 +1,4 @@
 'use strict';
-const express = require('express');
-const path = require('path');
-const serverless = require('serverless-http');
-const app = express();
-const bodyParser = require('body-parser');
-
-// const routerAuth = require('./routers/auth');
 
 const router = express.Router();
 router.get('/', (req, res) => {
@@ -22,10 +15,4 @@ router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.get('/demores', (req, res) => res.json({ user: "demo" ,pwdcode: "1qaz2wsx" }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
-app.use(bodyParser.json());
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/api', router);
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-
-module.exports = app;
-module.exports.handler = serverless(app);
+module.exports = router;
