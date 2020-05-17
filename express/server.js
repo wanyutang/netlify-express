@@ -23,8 +23,8 @@ app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/.netlify/functions/server/demo', demo); 
 
 
-app.use(process.env.publicPath+'/server', router);  // path must route to lambda
-app.use(process.env.publicPath+'/server/demo', demo); 
+app.use('/server', router);  // path must route to lambda
+app.use('/server/demo', demo); 
 
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
