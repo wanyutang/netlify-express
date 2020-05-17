@@ -1,3 +1,5 @@
 [build]
   command = "cp .env.sit .env && npm install && npm run build"
   functions = "functions"
+[context.production]
+  environment = { publicPath = "super secret" }
