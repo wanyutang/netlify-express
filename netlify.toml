@@ -1,5 +1,5 @@
 [build]
   command = "cp .env.sit .env && npm install && npm run build"
-  functions = "api"
+  functions = "functions"
 [context.production]
-  environment = { publicPath = "/.netlify/api" }
+  environment = { publicPath = "/.netlify/functions" }
