@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const routerAuth = require('./routers/auth');
 
 app.use(bodyParser.json());
-app.use('/.netlify/functions/server/auth', routerAuth);  // path must route to lambda
+app.use('/.netlify/lambda/server/auth', routerAuth);  // path must route to lambda
 app.use('/api/auth', routerAuth);
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
